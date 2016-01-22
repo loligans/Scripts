@@ -1,3 +1,24 @@
-#/bin/bash
-youtube-dl --extract-audio --audio-format mp3 --ignore-errors --output '/home/holly/%(title)s.%(ext)s' --batch-file=$1
-echo "" > $1
+#!/bin/bash
+USAGE="You must pass in a file with a list of links"
+EXUSAGE="Example usage would be: mp3-dl-batch /path/to/your/file"
+if [ $# -lt 1 ];
+then
+	echo "Not enough arguments"
+	echo $USAGE
+	echo "$EXUSAGE"
+	exit 2
+elif [ $# -gt 1 ];
+then
+	echo "Too many arguments"
+	echo $USAGE
+	echo "$EXUSAGE"
+	exit 2
+fi
+FILE=$1
+if [ -f $FILE ];
+then
+	youtube-dl --extract-audio --audio-format mp3 --ignore-errors --output '/home/holly/%(title)s.%(ext)s' --batch-file=$FILE
+	echo "" > $FILE
+else
+	echo "The file you entered \"$FILE\" does not exist."
+fi
