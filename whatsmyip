@@ -1,0 +1,3 @@
+#/bin/bash
+wget https://api.ipify.org/ -qO -
+echo
