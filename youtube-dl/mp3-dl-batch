@@ -17,7 +17,7 @@ fi
 FILE=$1
 if [ -f $FILE ];
 then
-	youtube-dl --extract-audio --audio-format mp3 --ignore-errors --output '/home/holly/%(title)s.%(ext)s' --batch-file=$FILE
+	youtube-dl --extract-audio --audio-format mp3 --ignore-errors --output '~/Music/%(title)s.%(ext)s' --batch-file=$FILE
 	echo "" > $FILE
 else
 	echo "The file you entered \"$FILE\" does not exist."
